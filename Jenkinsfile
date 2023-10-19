@@ -1,5 +1,4 @@
 pipeline {
-    sh "pwd"
     agent any
 
     stages {
