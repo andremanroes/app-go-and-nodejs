@@ -15,4 +15,4 @@ RUN npm install
 EXPOSE 80
 
 # Perintah yang akan dijalankan saat kontainer dimulai
-CMD [ "node", "app.js" ]
+CMD ["npx", "http-server", "-p", "80"]
