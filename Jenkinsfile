@@ -4,27 +4,31 @@ pipeline {
     stages {
         stage('Build and Test') {
             steps {
-                sh 'go build ./go-service/main.go'
-                sh 'npm install'
-                sh 'npm test'
-            }
-        }
-
-        stage('Build Container Images') {
-            steps {
                 script {
-                    docker.build("my-app-go-service:${env.BUILD_NUMBER}", './go-service')
-                    docker.build("my-app-node-service:${env.BUILD_NUMBER}", './node-service')
+                    // Langkah a: Build dan test layanan
+                    sh 'cd backend && go build && go test'
+                    sh 'cd frontend && npm install && npm test'
                 }
             }
         }
 
-        stage('Push Images to Docker Hub') {
+        stage('Build Docker Image') {
             steps {
                 script {
+                    // Langkah b: Membangun gambar Docker
+                    docker.build("my-backend-image", "./backend")
+                    docker.build("my-frontend-image", "./frontend")
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // Langkah c: Simpan gambar Docker di Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        docker.image("my-app-go-service:${env.BUILD_NUMBER}").push()
-                        docker.image("my-app-node-service:${env.BUILD_NUMBER}").push()
+                        docker.image("my-backend-image").push()
+                        docker.image("my-frontend-image").push()
                     }
                 }
             }
@@ -32,17 +36,11 @@ pipeline {
 
         stage('Deploy to Minikube') {
             steps {
-                sh 'kubectl apply -f k8s/'
+                script {
+                    // Langkah d: Terapkan manifest ke Minikube
+                    sh 'kubectl apply -f backend-deployment.yaml -f frontend-deployment.yaml -f backend-service.yaml -f frontend-service.yaml'
+                }
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Deployment successful'
-        }
-        failure {
-            echo 'Deployment failed'
         }
     }
 }
