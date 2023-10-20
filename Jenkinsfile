@@ -25,8 +25,8 @@ pipeline {
             steps {
                 script {
                     // Langkah b: Membangun gambar Docker
-                    docker.build("my-backend-image", "./backend")
-                    docker.build("my-frontend-image", "./frontend")
+                    docker.build("andremanroes71/jenkins:my-backend-image", "./backend")
+                    docker.build("andremanroes71/jenkins:my-frontend-image", "./frontend")
                 }
             }
         }
@@ -36,8 +36,8 @@ pipeline {
                 script {
                     // Langkah c: Simpan gambar Docker di Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        docker.image("my-backend-image").push()
-                        docker.image("my-frontend-image").push()
+                        docker.image("andremanroes71/jenkins:my-backend-image").push()
+                        docker.image("andremanroes71/jenkins:my-frontend-image").push()
                     }
                 }
             }
