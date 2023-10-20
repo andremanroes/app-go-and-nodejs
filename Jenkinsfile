@@ -3,16 +3,19 @@ pipeline {
         label 'jenkins-slave'
     }
 
-    stages {
-        stage('Build and Test') {
-            steps {
+         stage('Build and Test') {
+             steps {
                 script {
-                    // Langkah a: Build dan test layanan
+                    // Inisialisasi modul Go
+                    sh 'cd backend && go mod init my-backend-module'
+
+                    // Build dan test layanan
                     sh 'cd backend && go build && go test'
                     sh 'cd frontend && npm install && npm test'
                 }
-            }
+            }   
         }
+
 
         stage('Build Docker Image') {
             steps {
