@@ -47,7 +47,7 @@ pipeline {
             steps {
                 script {
                     // Langkah d: Terapkan manifest ke Minikube
-                    sh 'kubectl apply -f backend-deployment.yaml -f frontend-deployment.yaml -f backend-service.yaml -f frontend-service.yaml'
+                    sh 'kubectl apply -f backend-deployment.yaml -f frontend-deployment.yaml -f service.yaml'
                 }
             }
         }
