@@ -12,7 +12,11 @@ pipeline {
 
                     // Build dan test layanan
                     sh 'cd backend && go build && go test'
-                    sh 'cd frontend && npm install && npm test'
+                    sh 'cd frontend && npm install'
+                    sh 'npm install mocha chai --save-dev'
+                    sh 'cd frontend && npx mocha' // Menjalankan pengujian Mocha
+                    
+            
                 }
             }
         }
