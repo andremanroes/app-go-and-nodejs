@@ -6,13 +6,12 @@ WORKDIR /app
 
 # Salin file yang diperlukan ke dalam kontainer
 COPY app.js .
-COPY index.html .
 
 # Install dependensi
 RUN npm install
 
 # Expose the port on which your Node.js app is running
-EXPOSE 8282
+EXPOSE 80
 
 # Perintah yang akan dijalankan saat kontainer dimulai
 CMD [ "node", "app.js" ]

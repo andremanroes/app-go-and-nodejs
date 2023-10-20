@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: andremanroes71/jenkins:my-frontend-imagev5
+          image: andremanroes71/jenkins:my-frontend-imagev6
           ports:
             - containerPort: 80
