@@ -5,7 +5,8 @@ FROM node:14
 WORKDIR /app
 
 # Salin file yang diperlukan ke dalam kontainer
-COPY app.js .
+#COPY app.js .
+COPY index.html .
 
 # Install dependensi
 RUN npm install
