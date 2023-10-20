@@ -5,23 +5,23 @@ Ini adalah repositori yang berisi aplikasi dengan bagian backend yang ditulis da
 Struktur Direktori
 
     app-go-and-nodejs/
-|-- backend/
-|   |-- Dockerfile
-|   |-- main.go
-|
-|-- frontend/
-|   |-- Dockerfile
-|   |-- app.js
-|   |-- index.html
-|   |-- my-test.js
-|   |-- package.json
-|
-|-- k8s/
-|   |-- backend-deployment.yaml
-|   |-- frontend-deployment.yaml
-|   |-- service.yaml
-|
-|-- Jenkinsfile
+/|-- backend/
+/|   |-- Dockerfile
+/|   |-- main.go
+/|
+/|-- frontend/
+/|   |-- Dockerfile
+/|   |-- app.js
+/|   |-- index.html
+/|   |-- my-test.js
+/|   |-- package.json
+/|
+/|-- k8s/
+/|   |-- backend-deployment.yaml
+/|   |-- frontend-deployment.yaml
+/|   |-- service.yaml
+/|
+/|-- Jenkinsfile
 
 Berikut adalah penjelasan lebih lanjut tentang setiap direktori dan berkas di dalamnya:
 
