@@ -1,15 +1,17 @@
-# Gunakan image Golang yang telah disediakan oleh Docker Hub
+# Menggunakan gambar resmi Golang sebagai gambar dasar
 FROM golang:latest
 
-# Set lingkungan kerja ke direktori backend
-WORKDIR /go/src/app
+# Setel direktori kerja di dalam kontainer
+WORKDIR /app
 
-# Salin kode backend ke dalam image
+# Salin kode lokal ke kontainer
 COPY . .
 
-# Build aplikasi Go
-RUN go get -d -v ./...
-RUN go install -v ./...
+# Kompilasi aplikasi Go
+RUN go build -o app
 
-# Eksekusi aplikasi Go
+# Port yang akan digunakan oleh aplikasi
+EXPOSE 8080
+
+# Perintah yang akan dijalankan saat kontainer dimulai
 CMD ["./app"]

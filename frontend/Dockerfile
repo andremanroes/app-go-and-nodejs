@@ -1,17 +1,18 @@
-# Gunakan image Node.js yang telah disediakan oleh Docker Hub
-FROM node:latest
+# Gunakan gambar Node.js sebagai gambar dasar
+FROM node:14
 
-# Set lingkungan kerja ke direktori frontend
-WORKDIR /usr/src/app
+# Setel direktori kerja di dalam kontainer
+WORKDIR /app
 
-# Salin package.json dan package-lock.json
-COPY package*.json ./
+# Salin file yang diperlukan ke dalam kontainer
+COPY app.js .
+COPY index.html .
 
-# Install dependensi Node.js
+# Install dependensi
 RUN npm install
 
-# Salin kode frontend ke dalam image
-COPY . .
+# Expose the port on which your Node.js app is running
+EXPOSE 8282
 
-# Eksekusi aplikasi Node.js
-CMD ["npm", "start"]
+# Perintah yang akan dijalankan saat kontainer dimulai
+CMD [ "node", "app.js" ]

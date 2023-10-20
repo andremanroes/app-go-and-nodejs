@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: backend
-          image: andremanroes71/jenkins:my-backend-image
+          image: andremanroes71/jenkins:my-backend-imagev2
           ports:
             - containerPort: 8080

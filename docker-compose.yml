@@ -1,0 +1,11 @@
+version: '3'
+services:
+  backend:
+    image: andremanroes71/jenkins:my-backend-imagev2
+    ports:
+      - 8081:8080
+
+  frontend:
+    image: andremanroes71/jenkins:my-frontend-imagev2
+    ports:
+      - 8082:8282
