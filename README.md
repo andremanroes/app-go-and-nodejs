@@ -3,7 +3,6 @@ Simple App Go and Node.js
 Ini adalah repositori yang berisi aplikasi dengan bagian backend yang ditulis dalam Go dan bagian frontend yang ditulis dalam Node.js. Aplikasi ini juga dilengkapi dengan konfigurasi Docker dan Kubernetes untuk Deployment, serta Jenkinsfile untuk otomatisasi proses CI/CD.
 
 Struktur Direktori
-
     app-go-and-nodejs/
 |-- backend/
 |   |-- Dockerfile
